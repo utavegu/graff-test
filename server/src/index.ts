@@ -5,12 +5,12 @@ import cors from 'cors';
 const app = express();
 const port = process.env.PORT || 3000;
 
-app.use(json());
-app.use(cors());
+import ProductsController from './controllers/products.controller';
 
-app.get('/', (_req, res) => {
-  res.json({ ok: 1 });
-});
+// TODO: Надо ли что-то пошаманить с корсом? Если успеешь прикрутить контейнеры, локалхост туда клиентский
+// TODO: Найди у преттиера это правило и выключи
+// eslint-disable-next-line newline-per-chained-call
+app.use(json()).use(cors()).use('/api/products', ProductsController);
 
 app.listen(port, () => {
   console.log(`Server is listening on port ${port}`);

@@ -1,4 +1,4 @@
-const db = {
+const mockDatabase = {
   products: [
     {
       id: 1,
@@ -59,4 +59,4 @@ const db = {
   ],
 };
 
-export default db;
+export { mockDatabase };
