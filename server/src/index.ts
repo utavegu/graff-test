@@ -1,17 +1,45 @@
 import 'dotenv/config';
 import express, { json } from 'express';
 import cors from 'cors';
+import mongoose from 'mongoose';
+import ProductsController from './controllers/products.controller';
+import {
+  clientPort,
+  dbLogin,
+  dbName,
+  dbPassword,
+  mongoDbConnectionUrl,
+  serverPort,
+} from './config';
 
 const app = express();
-const port = process.env.PORT || 3000;
 
-import ProductsController from './controllers/products.controller';
+app
+  .use(json())
+  .use(cors({ origin: `http://localhost:${clientPort}` }))
+  .use('/api/products', ProductsController);
 
-// TODO: Надо ли что-то пошаманить с корсом? Если успеешь прикрутить контейнеры, локалхост туда клиентский
-// TODO: Найди у преттиера это правило и выключи
-// eslint-disable-next-line newline-per-chained-call
-app.use(json()).use(cors()).use('/api/products', ProductsController);
+const start = async () => {
+  try {
+    mongoose.connection
+      .on('error', (err: Error) => {
+        console.error(err);
+      })
+      .on('connected', () => {
+        console.log(`Подключение к базе данных ${dbName} произведено успешно!`);
+      });
 
-app.listen(port, () => {
-  console.log(`Server is listening on port ${port}`);
-});
+    await mongoose.connect(mongoDbConnectionUrl, {
+      user: dbLogin,
+      pass: dbPassword,
+      dbName: dbName,
+    });
+    app.listen(serverPort, () => {
+      console.log(`Сервер слушает на ${serverPort} порту!`);
+    });
+  } catch (error) {
+    console.error(String(error));
+  }
+};
+
+start().catch((error) => console.error(error));

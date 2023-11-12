@@ -39,4 +39,22 @@ router.get('/:id', async (request, responce) => {
   }
 });
 
+router.post('', async (_, responce) => {
+  try {
+    const products = await productsService.addProducts();
+    if (!products) {
+      throw new Error();
+    }
+    responce.status(201).json({
+      success: true,
+      data: products,
+    });
+  } catch (error) {
+    responce.status(500).json({
+      success: false,
+      message: 'Ошибка добавления товаров!',
+    });
+  }
+});
+
 export default router;

@@ -26,6 +26,7 @@ services:
       - MONGODB_LOGIN=$MONGODB_LOGIN
       - MONGODB_PASSWORD=$MONGODB_PASSWORD
       - DB_NAME=$DB_NAME
+      - CLIENT_EXTERNAL_PORT=$CLIENT_EXTERNAL_PORT
     command: [ "npm", "run", "dev" ]
     depends_on:
       - mongo

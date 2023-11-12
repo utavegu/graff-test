@@ -3,3 +3,5 @@ Node версии 20.9.0 (последняя на текущий момент LT
 Версия npm 10.1.0
 Express - 4.18.2
 TypeScript - 5.2.2
+
+НЕ ЗАБЫТЬ ДОБАВИТЬ НА ФРОНТЕ! POST localhost:3000/api/products
