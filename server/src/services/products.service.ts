@@ -6,15 +6,23 @@ import { IProduct } from '../typespaces/interfaces/IProduct';
 import { IProductsQueryParams } from '../typespaces/interfaces/IProductsQueryParams';
 
 export class ProductsService implements IProductsService {
-  async fetchProducts(queryParams: IProductsQueryParams): Promise<IProduct[]> {
-    const { sort } = queryParams;
+  async fetchProducts(
+    queryParams: IProductsQueryParams,
+  ): Promise<{ products: IProduct[]; pages: number }> {
     try {
+      const { sort, page = 1 } = queryParams;
+      const productsPerPage = 2;
+      const offset = (Number(page) - 1) * productsPerPage;
+      const total = await ProductModel.find().count();
+      const pages = Math.ceil(total / productsPerPage);
       const products = await ProductModel.find()
+        .limit(productsPerPage)
+        .skip(offset)
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         .sort(getProductsSortingConditions(sort))
         .select('-__v');
-      return products;
+      return { products, pages };
     } catch (error) {
       throw error;
     }

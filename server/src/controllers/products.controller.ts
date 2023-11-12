@@ -7,13 +7,13 @@ const router = express.Router();
 router.get('', async (request, responce) => {
   try {
     const queryParams = getProductsQueryParams(request);
-    const products = await productsService.fetchProducts(queryParams);
+    const res = await productsService.fetchProducts(queryParams);
     responce.status(200).json({
       success: true,
-      data: products,
+      data: res,
     });
   } catch (error) {
-    responce.status(404).json({
+    responce.status(500).json({
       success: false,
       message: 'Ошибка получения товаров',
     });

@@ -1,9 +1,24 @@
 import { IRequest } from '../typespaces/interfaces/IRequest';
 import { SortingTypes } from '../typespaces/enums/SortingTypes';
+import { IProductsQueryParams } from '../typespaces/interfaces/IProductsQueryParams';
+import { ParsedQs } from 'qs';
 
-export const getProductsQueryParams = (request: IRequest) => {
+// Колхозная валидация на коленке о_О, привет Joi и class-validator
+
+const getValidPage = (page: string | ParsedQs | string[] | ParsedQs[]) => {
+  if (Number(page)) {
+    if (Number(page) <= 0) {
+      return 1;
+    }
+    return Number(page);
+  }
+  return 1;
+};
+
+export const getProductsQueryParams = (
+  request: IRequest,
+): IProductsQueryParams => {
   return {
-    // Колхозная валидация на коленке о_О, привет Joi и class-validator
     sort:
       !!request.query?.sort &&
       (request.query?.sort === SortingTypes.POPULARITY ||
@@ -11,5 +26,6 @@ export const getProductsQueryParams = (request: IRequest) => {
         request.query?.sort === SortingTypes.PRICE_DESC)
         ? request.query?.sort
         : SortingTypes.POPULARITY,
+    page: !!request.query?.page ? getValidPage(request.query?.page) : 1,
   };
 };
