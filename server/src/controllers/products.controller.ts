@@ -1,19 +1,19 @@
 import express from 'express';
 import { productsService } from '../services/products.service';
-
-// TODO: Валидация
+import { getProductsQueryParams } from '../helpers/getProductsQueryParams';
 
 const router = express.Router();
 
-router.get('', async (_, responce) => {
+router.get('', async (request, responce) => {
   try {
-    const products = await productsService.fetchProducts();
+    const queryParams = getProductsQueryParams(request);
+    const res = await productsService.fetchProducts(queryParams);
     responce.status(200).json({
       success: true,
-      data: products,
+      data: res,
     });
   } catch (error) {
-    responce.status(404).json({
+    responce.status(500).json({
       success: false,
       message: 'Ошибка получения товаров',
     });
