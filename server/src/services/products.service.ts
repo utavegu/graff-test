@@ -1,6 +1,9 @@
-import { mockDatabase } from '../mockDatabase';
 import { ProductModel } from '../schemas/product.schema';
 import { getProductsSortingConditions } from '../helpers/getProductsSortingConditions';
+import { generateColorsFilter } from '../helpers/generateColorsFilter';
+import { generatePagination } from '../helpers/generatePagination';
+import { mockDatabase } from '../mockDatabase';
+import { PRODUCTS_PER_PAGE } from '../constants/products.constants';
 import { IProductsService } from '../typespaces/interfaces/IProductsService';
 import { IProduct } from '../typespaces/interfaces/IProduct';
 import { IProductsQueryParams } from '../typespaces/interfaces/IProductsQueryParams';
@@ -10,19 +13,19 @@ export class ProductsService implements IProductsService {
     queryParams: IProductsQueryParams,
   ): Promise<{ products: IProduct[]; pages: number }> {
     try {
-      const { sort, page = 1 } = queryParams;
-      const productsPerPage = 2;
-      const offset = (Number(page) - 1) * productsPerPage;
-      const total = await ProductModel.find().count();
-      const pages = Math.ceil(total / productsPerPage);
-      const products = await ProductModel.find()
-        .limit(productsPerPage)
-        .skip(offset)
+      const { sort, page = 1, colors } = queryParams;
+      const total = await ProductModel.find(
+        generateColorsFilter(colors),
+      ).count();
+      const pagination = generatePagination(page, total);
+      const products = await ProductModel.find(generateColorsFilter(colors))
+        .limit(PRODUCTS_PER_PAGE)
+        .skip(pagination.offset)
         // eslint-disable-next-line @typescript-eslint/ban-ts-comment
         // @ts-ignore
         .sort(getProductsSortingConditions(sort))
         .select('-__v');
-      return { products, pages };
+      return { products, pages: pagination.pages };
     } catch (error) {
       throw error;
     }

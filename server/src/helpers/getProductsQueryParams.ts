@@ -27,5 +27,6 @@ export const getProductsQueryParams = (
         ? request.query?.sort
         : SortingTypes.POPULARITY,
     page: !!request.query?.page ? getValidPage(request.query?.page) : 1,
+    colors: request.query?.colors,
   };
 };
