@@ -1,13 +1,13 @@
 import express from 'express';
 import { productsService } from '../services/products.service';
-
-// TODO: Валидация
+import { getProductsQueryParams } from '../helpers/getProductsQueryParams';
 
 const router = express.Router();
 
-router.get('', async (_, responce) => {
+router.get('', async (request, responce) => {
   try {
-    const products = await productsService.fetchProducts();
+    const queryParams = getProductsQueryParams(request);
+    const products = await productsService.fetchProducts(queryParams);
     responce.status(200).json({
       success: true,
       data: products,
