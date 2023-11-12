@@ -1,0 +1,58 @@
+services:
+
+  mongo:
+    container_name: mongo-database-container
+    image: mongo
+    volumes:
+      - ./database:/data/db
+    restart: always
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: $MONGODB_LOGIN
+      MONGO_INITDB_ROOT_PASSWORD: $MONGODB_PASSWORD
+
+  server:
+    container_name: server-container
+    image: node:20.9.0-alpine3.18
+    working_dir: /server
+    volumes:
+      - ./server:/server
+    ports:
+      - $SERVER_EXTERNAL_PORT:$SERVER_INTERNAL_PORT
+    environment:
+      - SERVER_INTERNAL_PORT=$SERVER_INTERNAL_PORT
+      - SERVER_EXTERNAL_PORT=$SERVER_EXTERNAL_PORT
+      - MONGODB_SERVICE_NAME=$MONGODB_SERVICE_NAME
+      - MONGODB_INTERNAL_PORT=$MONGODB_INTERNAL_PORT
+      - MONGODB_LOGIN=$MONGODB_LOGIN
+      - MONGODB_PASSWORD=$MONGODB_PASSWORD
+      - DB_NAME=$DB_NAME
+    command: [ "npm", "run", "dev" ]
+    depends_on:
+      - mongo
+
+  mongo-admin-panel:
+    container_name: mongo-admin-panel-container
+    image: mongo-express
+    restart: always
+    ports:
+      - $MONGO_ADMIN_PANEL_EXTERNAL_PORT:$MONGO_ADMIN_PANEL_INTERNAL_PORT
+    environment:
+      ME_CONFIG_MONGODB_ADMINUSERNAME: $MONGODB_LOGIN
+      ME_CONFIG_MONGODB_ADMINPASSWORD: $MONGODB_PASSWORD
+      ME_CONFIG_MONGODB_URL: mongodb://$MONGODB_LOGIN:$MONGODB_PASSWORD@$MONGODB_SERVICE_NAME:$MONGODB_INTERNAL_PORT
+    depends_on:
+      - mongo
+      - server
+
+  client:
+    container_name: client-container
+    image: node:20.9.0-alpine3.18
+    working_dir: /client
+    volumes:
+      - ./client:/client
+    ports:
+      - $CLIENT_EXTERNAL_PORT:$CLIENT_INTERNAL_PORT
+    command: [ "npm", "run", "dev" ]
+    depends_on:
+      - mongo
+      - server
