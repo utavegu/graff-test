@@ -53,6 +53,8 @@ services:
       - ./client:/client
     ports:
       - $CLIENT_EXTERNAL_PORT:$CLIENT_INTERNAL_PORT
+    environment:
+      - VITE_API_URL=$VITE_API_URL
     command: [ "npm", "run", "dev" ]
     depends_on:
       - mongo
