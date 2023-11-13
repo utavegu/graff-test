@@ -1,19 +1,17 @@
 import $api from '..';
-import {
-  IProduct,
-  IProductWithWrapper,
-  IProductsQueryParams,
-  IProductsWithWrapper,
-} from '../../typespaces/interfaces/products';
+import { IProduct } from '../../typespaces/interfaces/IProduct';
+import { IProductWithWrapper } from '../../typespaces/interfaces/IProductWithWrapper';
+import { IProductsWithWrapper } from '../../typespaces/interfaces/IProductsWithWrapper';
 
 export default class ProductsService {
-  static async fetchProducts(params?: IProductsQueryParams): Promise<IProductsWithWrapper['data']> {
+  static async fetchProducts(params?: URLSearchParams): Promise<IProductsWithWrapper['data']> {
     const productWithWrapper = await $api.request({
       method: 'get',
       url: `/products`,
       params,
     });
-    return productWithWrapper.data;
+    // TODO: Адаптер бы сюда (и ниже тоже)
+    return productWithWrapper.data.data;
   }
 
   static async fetchProductById(id: IProduct['_id']): Promise<IProductWithWrapper['data']> {
@@ -21,6 +19,6 @@ export default class ProductsService {
       method: 'get',
       url: `/products/${id}`,
     });
-    return productWithWrapper.data;
+    return productWithWrapper.data.data;
   }
 }

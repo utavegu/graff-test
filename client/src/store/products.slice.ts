@@ -1,6 +1,7 @@
 import { makeAutoObservable } from 'mobx';
 import ProductsService from '../api/services/ProductsService';
-import { IProduct, IProductsQueryParams, IProductsWithWrapper } from '../typespaces/interfaces/products';
+import { IProduct } from '../typespaces/interfaces/IProduct';
+import { IProductsWithWrapper } from '../typespaces/interfaces/IProductsWithWrapper';
 
 class ProductsSlice {
   product = null as unknown as IProduct;
@@ -28,7 +29,7 @@ class ProductsSlice {
     this.productsData = products;
   }
 
-  async fetchProducts(filters: IProductsQueryParams) {
+  async fetchProducts(filters: URLSearchParams) {
     try {
       this.setLoading(true);
       this.setError(null);
