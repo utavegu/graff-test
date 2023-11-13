@@ -1,6 +1,6 @@
 import { makeAutoObservable } from 'mobx';
 import { makePersistable } from 'mobx-persist-store';
-import { IProduct } from '../typespaces/interfaces/products';
+import { IProduct } from '../typespaces/interfaces/IProduct';
 
 class BasketSlice {
   basket = [] as IProduct[];
@@ -14,8 +14,8 @@ class BasketSlice {
     });
   }
 
-  setBasket(products: IProduct[]) {
-    this.basket = products;
+  pushProductInBasket(product: IProduct) {
+    this.basket.push(product);
   }
 }
 

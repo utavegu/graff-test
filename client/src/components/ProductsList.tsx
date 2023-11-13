@@ -1,8 +1,9 @@
 import { useEffect } from 'react';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { useNavigate, useLocation, Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { productsSlice } from '../store/products.slice';
 import { filtersSlice } from '../store/filters.slice';
+import { basketSlice } from '../store/basket.slice';
 import { getColorsString } from '../helpers/getColorsString';
 
 const ProductsList = () => {
@@ -35,18 +36,23 @@ const ProductsList = () => {
   }
 
   return (
-    <ul>
-      {!!productsSlice?.productsData?.products?.length &&
-        productsSlice.productsData.products.map((product, i) => (
-          <li key={i}>
-            <p>Название: {product.name}</p>
-            <p>Цена: {product.price}</p>
-            <p>Цвета: {product.colors}</p>
-            <p>Популярность: {product.popularity}</p>
-            <hr />
-          </li>
-        ))}
-    </ul>
+    <>
+      {/* Ты тут временно, пока хэдера нет */}
+      <div>Количество товаров в корзине: {basketSlice?.basket.length}</div>
+      <ul>
+        {!!productsSlice?.productsData?.products?.length &&
+          productsSlice.productsData.products.map(({ name, price, colors, popularity, _id }, i) => (
+            <li key={i}>
+              <p>Название: {name}</p>
+              <p>Цена: {price}</p>
+              <p>Цвета: {colors}</p>
+              <p>Популярность: {popularity}</p>
+              <Link to={`/products/${_id}`}>Смотреть товар</Link>
+              <hr />
+            </li>
+          ))}
+      </ul>
+    </>
   );
 };
 
