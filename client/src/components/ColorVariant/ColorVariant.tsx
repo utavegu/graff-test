@@ -1,3 +1,4 @@
+import { colorsDict } from '../../dictionaries/colorsDict';
 import styles from './ColorVariant.module.css';
 
 const ColorVariant = ({ color }: { color: string }) => {
@@ -7,7 +8,7 @@ const ColorVariant = ({ color }: { color: string }) => {
       style={{ backgroundColor: `${color}` }}
     >
       {/* TODO: Словарь */}
-      <span className="visually-hidden">{color}</span>
+      <span className="visually-hidden">{colorsDict[color]}</span>
     </li>
   );
 };
