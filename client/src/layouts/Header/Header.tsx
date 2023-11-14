@@ -1,4 +1,6 @@
 import { Link } from 'react-router-dom';
+import { observer } from 'mobx-react-lite';
+import { basketSlice } from '../../store/basket.slice';
 import Wrapper from '../Wrapper/Wrapper';
 import styles from './Header.module.css';
 
@@ -10,15 +12,17 @@ const Header = () => {
         <Link to="/">
           <h1 className={styles.mainHeading}>graff.shop</h1>
         </Link>
+        {/* TODO: По клику открывать модалку и мапить туда все товары из basketSlice?.basket*/}
         <button
           className={styles.cart}
           title="Открыть корзину"
         >
           <span className="visually-hidden">Открыть корзину</span>
         </button>
+        {basketSlice?.basket.length}
       </Wrapper>
     </header>
   );
 };
 
-export default Header;
+export default observer(Header);
