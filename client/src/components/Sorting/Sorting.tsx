@@ -1,7 +1,9 @@
 import { useState, ChangeEvent } from 'react';
 import { observer } from 'mobx-react-lite';
-import { filtersSlice } from '../store/filters.slice';
-import { SortingTypes } from '../typespaces/enums/SortingTypes';
+import { filtersSlice } from '../../store/filters.slice';
+import { SortingTypes } from '../../typespaces/enums/SortingTypes';
+import styles from './Sorting.module.css';
+import classNames from 'classnames';
 
 const Sorting = () => {
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -16,8 +18,8 @@ const Sorting = () => {
   });
 
   return (
-    <ul>
-      <li>
+    <ul className={styles.sorting}>
+      <li className={styles.sortingItem}>
         <label>
           <input
             className="visually-hidden"
@@ -25,16 +27,20 @@ const Sorting = () => {
             name={SortingTypes.POPULARITY}
             checked={filtersSlice.filters.sort === SortingTypes.POPULARITY}
             onChange={handleChangeInput}
-            onClick={() => {
-              console.log('1');
-            }}
           />
-          {/* <span className={`${s.custom_radio} ${s.list}`} title="Карточки"></span> */}
-          <span className="visually-hidden">По популярности</span>
+          <span
+            className={classNames([
+              styles.sortingItemDesc,
+              filtersSlice.filters.sort === SortingTypes.POPULARITY && styles.active,
+            ])}
+          >
+            По популярности
+          </span>
         </label>
       </li>
+
       {priceView.isShowAscPriceSorting && (
-        <li>
+        <li className={styles.sortingItem}>
           <label>
             <input
               className="visually-hidden"
@@ -44,13 +50,26 @@ const Sorting = () => {
               onChange={handleChangeInput}
               onClick={() => setPriceView({ isShowAscPriceSorting: false, isShowDescPriceSorting: true })}
             />
-            {/* <span className={`${s.custom_radio} ${s.module}`} title="Список"></span> */}
-            <span className="visually-hidden">Цена - сначала дешевые</span>
+            <span
+              className={classNames([
+                styles.sortingItemDesc,
+                filtersSlice.filters.sort === SortingTypes.PRICE_DESC && styles.active,
+              ])}
+            >
+              По цене
+            </span>
+            <span
+              className={classNames([
+                styles.sortingIcon,
+                filtersSlice.filters.sort === SortingTypes.PRICE_DESC && styles.custom1,
+              ])}
+            ></span>
           </label>
         </li>
       )}
+
       {priceView.isShowDescPriceSorting && (
-        <li>
+        <li className={styles.sortingItem}>
           <label>
             <input
               className="visually-hidden"
@@ -60,8 +79,20 @@ const Sorting = () => {
               onChange={handleChangeInput}
               onClick={() => setPriceView({ isShowAscPriceSorting: true, isShowDescPriceSorting: false })}
             />
-            {/* <span className={`${s.custom_radio} ${s.module}`} title="Список"></span> */}
-            <span className="visually-hidden">Цена - сначала дорогие</span>
+            <span
+              className={classNames([
+                styles.sortingItemDesc,
+                filtersSlice.filters.sort === SortingTypes.PRICE_ASC && styles.active,
+              ])}
+            >
+              По цене
+            </span>
+            <span
+              className={classNames([
+                styles.sortingIcon,
+                filtersSlice.filters.sort === SortingTypes.PRICE_ASC && styles.custom2,
+              ])}
+            ></span>
           </label>
         </li>
       )}
