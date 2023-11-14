@@ -1,9 +1,22 @@
+import { Link } from 'react-router-dom';
+import Wrapper from '../Wrapper/Wrapper';
+import styles from './Header.module.css';
+
 const Header = () => {
   return (
-    <header>
-      {/* По идее это лого, а значит тут ещё нужно завернуть в ссылку Link с возможностью перехода на главную. Экспортить как SVG не буду и фортифицировать варианты прихода из админки - тоже, не в рамках этого ТЗ */}
-      <h1>graff.shop</h1>
-      <button>Корзина</button>
+    <header className={styles.header}>
+      <Wrapper>
+        {/* Это логотип франшизы и, по хорошему, должен быть картинкой, приходящей из админки, с вытекающей из этого фортификацией стилей... Но не в рамках этого ТЗ */}
+        <Link to="/">
+          <h1 className={styles.mainHeading}>graff.shop</h1>
+        </Link>
+        <button
+          className={styles.cart}
+          title="Открыть корзину"
+        >
+          <span className="visually-hidden">Открыть корзину</span>
+        </button>
+      </Wrapper>
     </header>
   );
 };
