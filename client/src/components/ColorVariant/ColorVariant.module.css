@@ -1,0 +1,10 @@
+.сolorVariant {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+
+  @media (min-width: 1600px) {
+    width: 24px;
+    height: 24px;
+  }
+}

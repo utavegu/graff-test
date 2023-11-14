@@ -1,0 +1,9 @@
+.wrapper {
+  margin: 0 auto;
+  padding: 0 16px;
+  max-width: var(--desktop-width);
+
+  @media (min-width: 1600px) {
+    padding: 0 40px;
+  }
+}

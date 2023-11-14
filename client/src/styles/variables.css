@@ -1,0 +1,26 @@
+:root {
+  /* fonts */
+  --font-product-description-mobile: 400 14px/20px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-product-description-desktop: 400 16px/24px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-filters: 500 16px/22px 'Inter Medium', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-card-product-name-mobile: 600 14px/16px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-button-name: 600 16px/16px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-small-headers: 600 20px/24px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-medium-headers: 600 24px/32px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-large-headers: 600 32px/32px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+
+  /* colors */
+  --main-background-color: #fff;
+  --color-light-gray: #ebecf2;
+  --color-blue1: #798fff;
+  --color-blue2: #6172cc;
+  --color-gray2: #a3a7bf;
+  --color-light-black: #14161f;
+
+  /* media */
+  --mobile-width: 360px;
+  --desktop-width: 1600px;
+
+  /* stacking context */
+  --modal-overlay-z-index: 9999;
+}
