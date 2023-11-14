@@ -1,0 +1,50 @@
+.button {
+  display: inline-block;
+  vertical-align: middle;
+  font: var(--font-button-name);
+  line-height: 10px;
+  text-align: center;
+  border: none;
+  cursor: pointer;
+  padding: 14px 32px;
+  border-radius: 8px;
+  min-width: 116px;
+  min-height: 40px;
+
+  &:active {
+    transform: translateY(1px);
+  }
+
+  /* &:focus {
+  } */
+
+  /* &:disabled {
+  } */
+}
+
+.buttonPrimary {
+  color: var(--main-background-color);
+  background-color: var(--color-blue1);
+
+  &:hover {
+    background-color: var(--color-blue2);
+  }
+
+  &:active {
+    background-color: var(--color-blue1);
+  }
+}
+
+.buttonSecondary {
+  color: var(--color-blue1);
+  background-color: var(--main-background-color);
+  border: 1px solid var(--color-light-gray);
+
+  &:hover {
+    background-color: var(--color-light-gray);
+  }
+
+  &:active {
+    background-color: var(--main-background-color);
+  }
+}
