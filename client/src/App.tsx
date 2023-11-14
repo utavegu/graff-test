@@ -1,7 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import ProductsPage from './pages/ProductsPage';
 import ProductPage from './pages/ProductPage';
-import './App.css';
 
 function App() {
   return (

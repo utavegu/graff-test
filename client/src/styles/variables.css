@@ -1,0 +1,31 @@
+:root {
+  /* fonts */
+  --font-product-description-mobile: 400 14px/20px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-product-description-desktop: 400 16px/24px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-filters: 500 16px/22px 'Inter Medium', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-card-product-name-mobile: 600 14px/16px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-button-name: 600 16px/16px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-small-headers: 600 20px/24px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-medium-headers: 600 24px/32px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+  --font-large-headers: 600 32px/32px 'Inter SemiBold', oxygen, ubuntu, helvetica, arial, sans-serif;
+
+  /* colors */
+  --main-background-color: #fff;
+
+  /* media */
+  --mobile-width: 360px;
+  --desktop-width: 1600px;
+
+  /* stacking context */
+  --modal-overlay-z-index: 9999;
+}
+
+/*
+ЦВЕТА:
+white #fff
+PrimaryButton (добавь кнопкам своей анимании!)
+default, active #798FFF blue 1
+hover #6172CC blue 2
+SecondaryButton
+#fff - default, active
+*/
