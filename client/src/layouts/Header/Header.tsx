@@ -18,8 +18,8 @@ const Header = () => {
           title="Открыть корзину"
         >
           <span className="visually-hidden">Открыть корзину</span>
+          <span className={styles.productsCount}>{basketSlice?.basket.length}</span>
         </button>
-        {basketSlice?.basket.length}
       </Wrapper>
     </header>
   );
