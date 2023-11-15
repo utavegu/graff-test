@@ -54,6 +54,7 @@
   .productCard {
     grid-template-columns: 264px auto;
     gap: 0 32px;
+    border-top: 2px solid var(--color-light-gray);
   }
 
   .imageContainer {

@@ -18,19 +18,18 @@
 }
 
 .modal {
-  padding: 20px;
-  background-color: var(--main-background-color);
   position: relative;
-  text-align: center;
   /* С высотой костыльное решение, ибо рухнет при переполнении хэдера. Да и первый клик всё равно приводит к закрытию модалки, а не взаимодействию с хэдером */
   height: calc(100vh - 98px);
   width: 100vw;
-  padding: 24px 16px;
+  padding: 16px;
+  background-color: var(--main-background-color);
+  text-align: center;
 }
 
 .closeModalButton {
   position: absolute;
-  top: 34px;
+  top: 25px;
   right: 17px;
   width: 14px;
   height: 14px;

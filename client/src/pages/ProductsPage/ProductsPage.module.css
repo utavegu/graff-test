@@ -5,6 +5,7 @@
 .pageHeading {
   font: var(--font-medium-headers);
   margin: 16px 0 13px;
+  color: var(--color-light-black);
 }
 
 .showFilterButton {
@@ -33,5 +34,42 @@
 
   @media (min-width: 1600px) {
     display: block;
+  }
+}
+
+@media (min-width: 1600px) {
+  .productsPage {
+    display: grid;
+    grid-template-columns: 384px auto;
+    grid-template-rows: repeat(auto, 2);
+    column-gap: 32px;
+  }
+
+  .headingSection {
+    grid-column: 1 / 2;
+    grid-row: 1 / 2;
+  }
+
+  .controlsSection {
+    grid-column: 2 / 3;
+    grid-row: 1 / 2;
+    display: flex;
+    align-items: center;
+    margin: 0;
+  }
+
+  .colorsFilterSection {
+    grid-column: 1 / 2;
+    grid-row: 2 / 3;
+  }
+
+  .catalogSection {
+    grid-column: 2 / 3;
+    grid-row: 2 / 3;
+  }
+
+  .pageHeading {
+    font: var(--font-large-headers);
+    margin: 32px 0;
   }
 }
