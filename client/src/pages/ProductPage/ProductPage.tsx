@@ -21,14 +21,14 @@ const ProductPage = () => {
 
   if (productsSlice.isLoading) {
     // TODO: Спиннер
-    return <div>Загрузка данных о товаре...</div>;
+    return <Wrapper>Загрузка данных о товаре...</Wrapper>;
   }
 
   const product = productsSlice?.product;
 
   return (
     <Wrapper>
-      {productsSlice.error && <div>Ошибка загрузки данных о товаре: {productsSlice.error.message}</div>}
+      {productsSlice.error && <Wrapper>Ошибка загрузки данных о товаре: {productsSlice.error.message}</Wrapper>}
       <section className={styles.productPage}>
         <Button
           variant="tertiary"
@@ -37,17 +37,21 @@ const ProductPage = () => {
           Назад
         </Button>
         {product && (
-          <div>
+          <div className={styles.productInfo}>
             <div className={styles.imageContainer}>
               <img
                 src={product?.image}
                 alt={productsSlice.product?.name}
               />
             </div>
-            <h2 className={styles.productHeaing}>{product?.name}</h2>
-            <ColorsList colors={product?.colors} />
-            <div className={styles.price}>{prettifyCost(product?.price)}₽</div>
+            <h2 className={styles.productHeading}>{product?.name}</h2>
+            <ColorsList
+              className={styles.colorsList}
+              colors={product?.colors}
+            />
+            <div className={styles.price}>{prettifyCost(product?.price)} ₽</div>
             <Button
+              className={styles.addProductInBasketButton}
               variant="primary"
               onClick={() => {
                 basketSlice.pushProductInBasket(product);

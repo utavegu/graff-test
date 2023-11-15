@@ -34,7 +34,7 @@ const ProductCard: FC<PropTypes> = ({ product }) => {
           <h3 className={styles.productName}>{name}</h3>
         </Link>
         <ColorsList colors={colors} />
-        <div className={styles.price}>{prettifyCost(price)}₽</div>
+        <div className={styles.price}>{prettifyCost(price)} ₽</div>
         <Link
           className={classnames(styles.notMobile, styles.detailButtonWrapper)}
           to={`/products/${_id}`}
