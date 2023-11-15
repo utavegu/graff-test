@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router-dom';
 import MainLayout from '../layouts/MainLayout';
-import ProductsPage from '../pages/ProductsPage';
+import ProductsPage from '../pages/ProductsPage/ProductsPage';
 import ProductPage from '../pages/ProductPage';
 
 const PublicRoutes = () => {

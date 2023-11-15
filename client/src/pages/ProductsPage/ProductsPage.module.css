@@ -1,0 +1,37 @@
+.headingSection {
+  position: relative;
+}
+
+.pageHeading {
+  font: var(--font-medium-headers);
+  margin: 16px 0 13px;
+}
+
+.showFilterButton {
+  position: absolute;
+  top: 10px;
+  right: 0;
+  width: 16px;
+  height: 15px;
+  border: none;
+  cursor: pointer;
+  background: url('../../assets/icons/filters.svg') center center / 16px 15px no-repeat transparent;
+
+  @media (min-width: 1600px) {
+    display: none;
+  }
+}
+
+.controlsSection {
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 24px;
+}
+
+.colorsFilterSection {
+  display: none;
+
+  @media (min-width: 1600px) {
+    display: block;
+  }
+}

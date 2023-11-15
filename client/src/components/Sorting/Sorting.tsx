@@ -63,7 +63,7 @@ const Sorting = () => {
                 styles.sortingIcon,
                 filtersSlice.filters.sort === SortingTypes.PRICE_DESC && styles.desc,
               ])}
-              title='Сначала дорогие'
+              title="Сначала дорогие"
             ></span>
           </label>
         </li>
@@ -93,7 +93,7 @@ const Sorting = () => {
                 styles.sortingIcon,
                 filtersSlice.filters.sort === SortingTypes.PRICE_ASC && styles.asc,
               ])}
-              title='Сначала дешевые'
+              title="Сначала дешевые"
             ></span>
           </label>
         </li>
