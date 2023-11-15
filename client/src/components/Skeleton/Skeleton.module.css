@@ -1,0 +1,83 @@
+@keyframes load {
+  from {
+    left: -150px;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+.skeleton {
+  position: relative;
+  overflow: hidden;
+  &::before {
+    content: '';
+    display: block;
+    position: absolute;
+    left: -150px;
+    top: 0;
+    height: 100%;
+    width: 150px;
+    background: linear-gradient(to right, transparent 0%, var(--color-blue1) 50%, transparent 100%);
+    animation: load 0.5s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+  }
+}
+
+.listItem {
+  margin: 0 0 20px;
+  border-radius: 2px;
+  background: transparent;
+  display: flex;
+  column-gap: 15px;
+  padding: 16px;
+  max-height: 140px;
+}
+
+.imageBlock {
+  width: 100px;
+  height: 100px;
+}
+
+.imageDummy {
+  width: 100px;
+  height: 100%;
+  background-color: var(--color-gray2);
+}
+
+.textBlock {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.headingDummy {
+  background-color: var(--color-gray2);
+  height: 20px;
+  margin-bottom: 10px;
+}
+
+.contentDummy {
+  background-color: var(--color-gray2);
+  height: 10px;
+  margin-bottom: 5px;
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+@media (min-width: 1600px) {
+  .listItem {
+    max-height: 260px;
+  }
+
+  .imageBlock {
+    width: 260px;
+    height: 260px;
+  }
+
+  .imageDummy {
+    width: 240px;
+  }
+}

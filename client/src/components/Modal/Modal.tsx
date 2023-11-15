@@ -31,7 +31,7 @@ function Modal({
     return () => {
       document.removeEventListener('keydown', closeByButton, false);
     };
-  // eslint-disable-next-line react-hooks/exhaustive-deps
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
   return (
