@@ -1,5 +1,6 @@
 :root {
   /* fonts */
+  --font-basket-products-count: 400 12px/14px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
   --font-product-description-mobile: 400 14px/20px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
   --font-product-description-desktop: 400 16px/24px 'Inter Regular', oxygen, ubuntu, helvetica, arial, sans-serif;
   --font-filters: 500 16px/22px 'Inter Medium', oxygen, ubuntu, helvetica, arial, sans-serif;
@@ -15,7 +16,9 @@
   --color-blue1: #798fff;
   --color-blue2: #6172cc;
   --color-gray2: #a3a7bf;
+  --color-gray3: #777b8c;
   --color-light-black: #14161f;
+  --color-black: #000;
 
   /* media */
   --mobile-width: 360px;

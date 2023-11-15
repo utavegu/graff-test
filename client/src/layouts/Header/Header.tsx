@@ -1,10 +1,14 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { observer } from 'mobx-react-lite';
 import { basketSlice } from '../../store/basket.slice';
 import Wrapper from '../Wrapper/Wrapper';
+import Modal from '../../components/Modal/Modal';
+import { Basket } from '../../components/Basket/Basket';
 import styles from './Header.module.css';
 
 const Header = () => {
+  const [isModalOpened, setIsModalOpened] = useState(false);
   return (
     <header className={styles.header}>
       <Wrapper>
@@ -16,10 +20,19 @@ const Header = () => {
         <button
           className={styles.cart}
           title="Открыть корзину"
+          onClick={() => {
+            setIsModalOpened(true);
+          }}
         >
           <span className="visually-hidden">Открыть корзину</span>
+          <span className={styles.productsCount}>{basketSlice?.basket.length}</span>
         </button>
-        {basketSlice?.basket.length}
+        <Modal
+          isOpened={isModalOpened}
+          setIsOpened={setIsModalOpened}
+        >
+          <Basket />
+        </Modal>
       </Wrapper>
     </header>
   );

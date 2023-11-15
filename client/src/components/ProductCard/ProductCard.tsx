@@ -4,7 +4,7 @@ import classnames from 'classnames';
 import { prettifyCost } from '../../helpers/prettifyCost';
 import { basketSlice } from '../../store/basket.slice';
 import Button from '../Button/Button';
-import ColorVariant from '../ColorVariant/ColorVariant';
+import ColorsList from '../ColorsList/ColorsList';
 import { IProduct } from '../../typespaces/interfaces/IProduct';
 import styles from './ProductCard.module.css';
 
@@ -33,15 +33,8 @@ const ProductCard: FC<PropTypes> = ({ product }) => {
         <Link to={`/products/${_id}`}>
           <h3 className={styles.productName}>{name}</h3>
         </Link>
-        <ul className={styles.colorsList}>
-          {colors?.map((color, i) => (
-            <ColorVariant
-              key={i}
-              color={color}
-            />
-          ))}
-        </ul>
-        <div className={styles.price}>{prettifyCost(price)}₽</div>
+        <ColorsList colors={colors} />
+        <div className={styles.price}>{prettifyCost(price)} ₽</div>
         <Link
           className={classnames(styles.notMobile, styles.detailButtonWrapper)}
           to={`/products/${_id}`}

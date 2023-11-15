@@ -5,6 +5,7 @@ import { productsSlice } from '../../store/products.slice';
 import { filtersSlice } from '../../store/filters.slice';
 import { getColorsString } from '../../helpers/getColorsString';
 import ProductCard from '../ProductCard/ProductCard';
+import Skeleton from '../Skeleton/Skeleton';
 import styles from './ProductsList.module.css';
 
 const ProductsList = () => {
@@ -19,6 +20,7 @@ const ProductsList = () => {
         filtersSlice.filters.colors
       )}`,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filtersSlice.filters.page, filtersSlice.filters.sort, filtersSlice.filters.colors]);
 
   useEffect(() => {
@@ -28,16 +30,13 @@ const ProductsList = () => {
     }
   }, [location.search]);
 
-  if (productsSlice.isLoading) {
-    return <div>Загрузка товаров...</div>;
-  }
-
   if (productsSlice.error) {
     return <div>Ошибка загрузки товаров! Попробуйте позже</div>;
   }
 
   return (
     <ul className={styles.productsList}>
+      {productsSlice.isLoading && ['', ''].map(() => <Skeleton />)}
       {!!productsSlice?.productsData?.products?.length &&
         productsSlice.productsData.products.map((product, i) => (
           <ProductCard
