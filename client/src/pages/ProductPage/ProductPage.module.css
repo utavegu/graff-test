@@ -45,6 +45,17 @@
   color: var(--color-light-black);
 }
 
+.preloader {
+  background-image: url(../../assets/icons/round-loading.svg);
+  width: 80px;
+  height: 80px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  margin-right: -50%;
+  transform: translate(-50%, -50%);
+}
+
 @media (min-width: 1600px) {
   .productPage {
     padding: 32px 0 0;

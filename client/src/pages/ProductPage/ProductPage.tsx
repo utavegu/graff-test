@@ -20,8 +20,11 @@ const ProductPage = () => {
   }, [id]);
 
   if (productsSlice.isLoading) {
-    // TODO: Спиннер
-    return <Wrapper>Загрузка данных о товаре...</Wrapper>;
+    return (
+      <Wrapper>
+        <div className={styles.preloader}></div>
+      </Wrapper>
+    );
   }
 
   const product = productsSlice?.product;
