@@ -3,3 +3,8 @@
   padding: 0;
   margin: 0;
 }
+
+.productsNotFound {
+  font: var(--font-medium-headers);
+  color: var(--color-light-black);
+}

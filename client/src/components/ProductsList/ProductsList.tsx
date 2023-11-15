@@ -36,14 +36,18 @@ const ProductsList = () => {
 
   return (
     <ul className={styles.productsList}>
-      {productsSlice.isLoading && ['', ''].map(() => <Skeleton />)}
-      {!!productsSlice?.productsData?.products?.length &&
+      {productsSlice.isLoading ? (
+        ['', ''].map(() => <Skeleton />)
+      ) : productsSlice?.productsData?.products?.length ? (
         productsSlice.productsData.products.map((product, i) => (
           <ProductCard
             key={i}
             product={product}
           />
-        ))}
+        ))
+      ) : (
+        <div className={styles.productsNotFound}>Товары не найдены!</div>
+      )}
     </ul>
   );
 };
