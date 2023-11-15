@@ -19,6 +19,7 @@ const ProductsList = () => {
         filtersSlice.filters.colors
       )}`,
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [filtersSlice.filters.page, filtersSlice.filters.sort, filtersSlice.filters.colors]);
 
   useEffect(() => {

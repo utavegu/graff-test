@@ -17,6 +17,10 @@ class BasketSlice {
   pushProductInBasket(product: IProduct) {
     this.basket.push(product);
   }
+
+  removeProduct(index: number) {
+    this.basket.splice(index, 1);
+  }
 }
 
 const basketSlice = new BasketSlice();

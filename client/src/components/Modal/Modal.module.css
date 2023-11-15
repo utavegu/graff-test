@@ -10,6 +10,7 @@
   justify-content: center;
   opacity: 0;
   pointer-events: none;
+  z-index: var(--modal-overlay-z-index);
 }
 
 .overlay.active {
