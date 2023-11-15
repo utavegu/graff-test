@@ -2,8 +2,8 @@ import React, { FC } from 'react';
 import classnames from 'classnames';
 import styles from './Button.module.css';
 
-type PropsType = {
-  variant: 'primary' | 'secondary';
+type PropTypes = {
+  variant: 'primary' | 'secondary' | 'tertiary';
   className?: string;
   children: React.ReactNode;
   type?: 'button' | 'submit' | 'reset';
@@ -11,7 +11,7 @@ type PropsType = {
   isDisabled?: boolean;
 };
 
-const Button: FC<PropsType> = ({
+const Button: FC<PropTypes> = ({
   variant,
   className,
   children,
@@ -22,6 +22,7 @@ const Button: FC<PropsType> = ({
   const buttonClasses = classnames(className, styles.button, {
     [styles.buttonPrimary]: variant === 'primary',
     [styles.buttonSecondary]: variant === 'secondary',
+    [styles.buttonTertiary]: variant === 'tertiary',
   });
   return (
     <button
