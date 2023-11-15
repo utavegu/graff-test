@@ -15,6 +15,7 @@ const Pagination = () => {
         onClick={() => {
           filtersSlice.setPage(filtersSlice.filters.page - 1);
         }}
+        title="Предыдущая страница"
       >
         <span className="visually-hidden">Предыдущая страница</span>
       </button>
@@ -27,6 +28,7 @@ const Pagination = () => {
         onClick={() => {
           filtersSlice.setPage(filtersSlice.filters.page + 1);
         }}
+        title="Следующая страница"
       >
         <span className="visually-hidden">Следующая страница</span>
       </button>

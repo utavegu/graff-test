@@ -1,9 +1,9 @@
 import { useState, ChangeEvent } from 'react';
 import { observer } from 'mobx-react-lite';
+import classNames from 'classnames';
 import { filtersSlice } from '../../store/filters.slice';
 import { SortingTypes } from '../../typespaces/enums/SortingTypes';
 import styles from './Sorting.module.css';
-import classNames from 'classnames';
 
 const Sorting = () => {
   const handleChangeInput = (event: ChangeEvent<HTMLInputElement>) => {
@@ -61,8 +61,9 @@ const Sorting = () => {
             <span
               className={classNames([
                 styles.sortingIcon,
-                filtersSlice.filters.sort === SortingTypes.PRICE_DESC && styles.custom1,
+                filtersSlice.filters.sort === SortingTypes.PRICE_DESC && styles.desc,
               ])}
+              title='Сначала дорогие'
             ></span>
           </label>
         </li>
@@ -90,8 +91,9 @@ const Sorting = () => {
             <span
               className={classNames([
                 styles.sortingIcon,
-                filtersSlice.filters.sort === SortingTypes.PRICE_ASC && styles.custom2,
+                filtersSlice.filters.sort === SortingTypes.PRICE_ASC && styles.asc,
               ])}
+              title='Сначала дешевые'
             ></span>
           </label>
         </li>
