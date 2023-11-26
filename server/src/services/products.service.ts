@@ -46,8 +46,30 @@ export class ProductsService implements IProductsService {
 
   async addProducts(): Promise<IProduct[]> {
     try {
-      const products = await ProductModel.insertMany(mockDatabase.products);
-      return products;
+      const productsInDb = await ProductModel.find().select('name');
+
+      const mockDbProductsName = mockDatabase.products.map(
+        (product) => product.name,
+      );
+
+      const intersection = productsInDb.filter((element) => {
+        return mockDbProductsName.includes(element.name);
+      });
+
+      if (!intersection.length) {
+        const products = await ProductModel.insertMany(mockDatabase.products);
+        return products;
+      }
+      throw new Error();
+    } catch (error) {
+      throw error;
+    }
+  }
+
+  async clearProductsCollection() {
+    try {
+      await ProductModel.deleteMany();
+      return;
     } catch (error) {
       throw error;
     }

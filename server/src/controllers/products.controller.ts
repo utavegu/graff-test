@@ -47,13 +47,25 @@ router.post('', async (_, responce) => {
     }
     responce.status(201).json({
       success: true,
-      data: products,
+      message: 'Товары успешно перенесены в базу!',
     });
   } catch (error) {
     responce.status(500).json({
       success: false,
-      message: 'Ошибка добавления товаров!',
+      message: 'Товары уже были перенесены в базу ранее!',
     });
+  }
+});
+
+router.delete('', async (_, responce) => {
+  try {
+    await productsService.clearProductsCollection();
+    responce.status(200).json({
+      success: true,
+      message: 'База товаров успешно очищена!',
+    });
+  } catch (err) {
+    console.error(err);
   }
 });
 
