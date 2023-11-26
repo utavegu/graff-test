@@ -8,3 +8,7 @@
     height: 24px;
   }
 }
+
+.сolorVariantWhite {
+  border: 2px solid var(--color-light-gray);
+}

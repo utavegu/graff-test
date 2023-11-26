@@ -1,5 +1,6 @@
 import { ChangeEvent } from 'react';
 import { observer } from 'mobx-react-lite';
+import classNames from 'classnames';
 import { filtersSlice } from '../../store/filters.slice';
 import { colorsDict } from '../../dictionaries/colorsDict';
 import styles from './ColorsFilter.module.css';
@@ -31,7 +32,7 @@ const ColorsFilter = () => {
                 onChange={handleInputChange}
               />
               <span
-                className={styles.customCheckbox}
+                className={classNames(styles.customCheckbox, color === 'white' && styles.сolorVariantWhite)}
                 style={{ backgroundColor: color }}
               ></span>
               <span className={styles.colorsDesc}>{colorsDict[color]}</span>

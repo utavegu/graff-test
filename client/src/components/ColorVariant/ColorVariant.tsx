@@ -1,13 +1,13 @@
+import classNames from 'classnames';
 import { colorsDict } from '../../dictionaries/colorsDict';
 import styles from './ColorVariant.module.css';
 
 const ColorVariant = ({ color }: { color: string }) => {
   return (
     <li
-      className={styles.сolorVariant}
+      className={classNames(styles.сolorVariant, color === 'white' && styles.сolorVariantWhite)}
       style={{ backgroundColor: `${color}` }}
     >
-      {/* TODO: Словарь */}
       <span className="visually-hidden">{colorsDict[color]}</span>
     </li>
   );

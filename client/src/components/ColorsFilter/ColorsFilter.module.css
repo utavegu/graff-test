@@ -36,6 +36,10 @@
   cursor: pointer;
 }
 
+.сolorVariantWhite {
+  border: 2px solid var(--color-light-gray);
+}
+
 .colorsFilterList input:checked + .customCheckbox {
   background: url('../../assets/icons/check.svg') center center / 13px 9px no-repeat transparent;
 }

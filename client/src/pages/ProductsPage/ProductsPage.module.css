@@ -48,19 +48,27 @@
   .headingSection {
     grid-column: 1 / 2;
     grid-row: 1 / 2;
+    position: sticky;
+    top: 50px;
   }
 
   .controlsSection {
     grid-column: 2 / 3;
     grid-row: 1 / 2;
+    position: sticky;
+    top: 49px;
     display: flex;
     align-items: center;
     margin: 0;
+    background-color: var(--main-background-color);
   }
 
   .colorsFilterSection {
     grid-column: 1 / 2;
     grid-row: 2 / 3;
+    position: sticky;
+    top: 145px;
+    height: 70vh;
   }
 
   .catalogSection {

@@ -37,7 +37,7 @@ const ProductsList = () => {
   return (
     <ul className={styles.productsList}>
       {productsSlice.isLoading ? (
-        ['', ''].map(() => <Skeleton />)
+        ['', '', '', '', ''].map(() => <Skeleton />)
       ) : productsSlice?.productsData?.products?.length ? (
         productsSlice.productsData.products.map((product, i) => (
           <ProductCard
