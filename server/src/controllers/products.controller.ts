@@ -39,7 +39,7 @@ router.get('/:id', async (request, responce) => {
   }
 });
 
-router.post('', async (_, responce) => {
+router.post('/migration', async (_, responce) => {
   try {
     const products = await productsService.addProducts();
     if (!products) {
