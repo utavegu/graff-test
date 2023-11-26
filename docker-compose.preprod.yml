@@ -27,20 +27,6 @@ services:
     depends_on:
       - mongo
 
-  mongo-admin-panel:
-    container_name: mongo-admin-panel-container
-    image: mongo-express
-    restart: always
-    ports:
-      - $MONGO_ADMIN_PANEL_EXTERNAL_PORT:$MONGO_ADMIN_PANEL_INTERNAL_PORT
-    environment:
-      ME_CONFIG_MONGODB_ADMINUSERNAME: $MONGODB_LOGIN
-      ME_CONFIG_MONGODB_ADMINPASSWORD: $MONGODB_PASSWORD
-      ME_CONFIG_MONGODB_URL: mongodb://$MONGODB_LOGIN:$MONGODB_PASSWORD@$MONGODB_SERVICE_NAME:$MONGODB_INTERNAL_PORT
-    depends_on:
-      - mongo
-      - server
-
   client:
     container_name: client-container
     build: ./client
